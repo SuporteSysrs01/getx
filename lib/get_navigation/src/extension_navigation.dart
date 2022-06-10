@@ -994,7 +994,7 @@ you can only use widgets and widget functions here''';
   /// `() => MyHomeScreenView` becomes `/my-home-screen-view`.
   String _cleanRouteName(String name) {
     name = name.replaceAllMapped(RegExp(r'(\(.*\) => )(.*)'),
-        (match) => '${match.start}${match.group(2)}');
+        (match) => '${match.group(0)}${match.group(2)}');
 
     /// uncommonent for URL styling.
     // name = name.paramCase!;
