@@ -993,8 +993,8 @@ you can only use widgets and widget functions here''';
   /// TODO: check for a more "appealing" URL naming convention.
   /// `() => MyHomeScreenView` becomes `/my-home-screen-view`.
   String _cleanRouteName(String name) {
-    name = name.replaceAllMapped(RegExp(r'(\(.*\) => )(.*)'),
-        (match) => '${match.group(0)}${match.group(2)}');
+    name = name.replaceAllMapped(
+        RegExp(r'(\(.*\) => )(.*)'), (match) => '${match.group(2)}');
 
     /// uncommonent for URL styling.
     // name = name.paramCase!;
