@@ -354,7 +354,7 @@ extension ExtensionSnackbar on GetInterface {
     if (instantInit) {
       controller.show();
     } else {
-      SchedulerBinding.instance!.addPostFrameCallback((_) {
+      SchedulerBinding.instance.addPostFrameCallback((_) {
         controller.show();
       });
     }
@@ -465,7 +465,7 @@ extension ExtensionSnackbar on GetInterface {
       controller.show();
     } else {
       //routing.isSnackbar = true;
-      SchedulerBinding.instance!.addPostFrameCallback((_) {
+      SchedulerBinding.instance.addPostFrameCallback((_) {
         controller.show();
       });
     }
@@ -1161,12 +1161,7 @@ you can only use widgets and widget functions here''';
   }
 
   ///The current [WidgetsBinding]
-  WidgetsBinding? get engine {
-    if (WidgetsBinding.instance == null) {
-      WidgetsFlutterBinding();
-    }
-    return WidgetsBinding.instance;
-  }
+  WidgetsBinding? get engine => WidgetsBinding.instance;
 
   /// The window to which this binding is bound.
   ui.SingletonFlutterWindow get window => ui.window;

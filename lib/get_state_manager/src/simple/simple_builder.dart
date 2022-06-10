@@ -54,7 +54,7 @@ class _ValueBuilderState<T> extends State<ValueBuilder<T>> {
 
   void updater(T newValue) {
     widget.onUpdate?.call(newValue);
-    
+
     setState(() {
       value = newValue;
     });
