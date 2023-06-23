@@ -8,7 +8,7 @@ void main() {
   testWidgets("Get.to navigates to provided route", (tester) async {
     await tester.pumpWidget(Wrapper(child: Container()));
 
-    Get.to(FirstScreen());
+    Get.to(() => FirstScreen());
 
     await tester.pumpAndSettle();
 
@@ -53,7 +53,7 @@ void main() {
   testWidgets("Get.off navigates to provided route", (tester) async {
     await tester.pumpWidget(Wrapper(child: FirstScreen()));
 
-    Get.off(SecondScreen());
+    Get.off(() => SecondScreen());
 
     await tester.pumpAndSettle();
 
@@ -63,7 +63,7 @@ void main() {
   testWidgets("Get.off removes current route", (tester) async {
     await tester.pumpWidget(Wrapper(child: FirstScreen()));
 
-    Get.off(SecondScreen());
+    Get.off(() => SecondScreen());
     Get.back();
 
     await tester.pumpAndSettle();
@@ -128,7 +128,7 @@ void main() {
   testWidgets("Get.offAll navigates to provided route", (tester) async {
     await tester.pumpWidget(Wrapper(child: FirstScreen()));
 
-    Get.offAll(SecondScreen());
+    Get.offAll(() => SecondScreen());
 
     await tester.pumpAndSettle();
 
@@ -138,8 +138,8 @@ void main() {
   testWidgets("Get.offAll removes all previous routes", (tester) async {
     await tester.pumpWidget(Wrapper(child: FirstScreen()));
 
-    Get.to(SecondScreen());
-    Get.offAll(ThirdScreen());
+    Get.to(() => SecondScreen());
+    Get.offAll(() => ThirdScreen());
     Get.back();
 
     await tester.pumpAndSettle();
@@ -234,7 +234,7 @@ void main() {
   testWidgets("Get.offUntil navigates to provided route", (tester) async {
     await tester.pumpWidget(Wrapper(child: Container()));
 
-    Get.to(FirstScreen());
+    Get.to(() => FirstScreen());
 
     Get.offUntil(GetPageRoute(page: () => ThirdScreen()),
         (route) => (route as GetPageRoute).routeName == '/FirstScreen');
@@ -249,8 +249,8 @@ void main() {
       (tester) async {
     await tester.pumpWidget(Wrapper(child: Container()));
 
-    Get.to(FirstScreen());
-    Get.to(SecondScreen());
+    Get.to(() => FirstScreen());
+    Get.to(() => SecondScreen());
     Get.offUntil(GetPageRoute(page: () => ThirdScreen()),
         (route) => (route as GetPageRoute).routeName == '/FirstScreen');
     Get.back();
@@ -265,8 +265,8 @@ void main() {
       (tester) async {
     await tester.pumpWidget(Wrapper(child: Container()));
 
-    Get.to(FirstScreen());
-    Get.to(SecondScreen());
+    Get.to(() => FirstScreen());
+    Get.to(() => SecondScreen());
     Get.offUntil(GetPageRoute(page: () => ThirdScreen()),
         (route) => (route as GetPageRoute).routeName == '/FirstScreen');
     Get.back();
@@ -342,7 +342,7 @@ void main() {
       ),
     );
 
-    Get.to(SecondScreen());
+    Get.to(() => SecondScreen());
     Get.back();
 
     await tester.pumpAndSettle();
@@ -355,7 +355,7 @@ void main() {
       (tester) async {
     await tester.pumpWidget(Wrapper(child: FirstScreen()));
 
-    Get.to(SecondScreen());
+    Get.to(() => SecondScreen());
     Get.snackbar('title', "message");
     Get.back(closeOverlays: true);
 
@@ -373,7 +373,7 @@ void main() {
       ),
     );
 
-    Get.to(FirstScreen());
+    Get.to(() => FirstScreen());
 
     await tester.pumpAndSettle();
 
@@ -386,7 +386,7 @@ void main() {
       ),
     );
 
-    Get.to(FirstScreen());
+    Get.to(() => FirstScreen());
 
     await tester.pumpAndSettle();
 
@@ -399,7 +399,7 @@ void main() {
       ),
     );
 
-    Get.to(FirstScreen());
+    Get.to(() => FirstScreen());
 
     await tester.pumpAndSettle();
 
@@ -412,7 +412,7 @@ void main() {
       ),
     );
 
-    Get.to(FirstScreen());
+    Get.to(() => FirstScreen());
 
     await tester.pumpAndSettle();
 
@@ -425,7 +425,7 @@ void main() {
       ),
     );
 
-    Get.to(FirstScreen());
+    Get.to(() => FirstScreen());
 
     await tester.pumpAndSettle();
 
@@ -438,7 +438,7 @@ void main() {
       ),
     );
 
-    Get.to(FirstScreen());
+    Get.to(() => FirstScreen());
 
     await tester.pumpAndSettle();
 
@@ -451,7 +451,7 @@ void main() {
       ),
     );
 
-    Get.to(FirstScreen());
+    Get.to(() => FirstScreen());
 
     await tester.pumpAndSettle();
 
@@ -464,7 +464,7 @@ void main() {
       ),
     );
 
-    Get.to(FirstScreen());
+    Get.to(() => FirstScreen());
 
     await tester.pumpAndSettle();
 
@@ -477,7 +477,7 @@ void main() {
       ),
     );
 
-    Get.to(FirstScreen());
+    Get.to(() => FirstScreen());
 
     await tester.pumpAndSettle();
 
