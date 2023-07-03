@@ -72,14 +72,14 @@ abstract class GetConnectInterface with GetLifeCycleBase {
 
   Future<GraphQLResponse<T>> query<T>(
     String query, {
-    String? url,
+    required String url,
     Map<String, dynamic>? variables,
     Map<String, String>? headers,
   });
 
   Future<GraphQLResponse<T>> mutation<T>(
     String mutation, {
-    String? url,
+    required String url,
     Map<String, dynamic>? variables,
     Map<String, String>? headers,
   });
@@ -157,7 +157,7 @@ class GetConnect extends GetConnectInterface {
 
   @override
   Future<Response<T>> post<T>(
-    String? url,
+    String url,
     dynamic body, {
     String? contentType,
     Map<String, String>? headers,
@@ -302,7 +302,7 @@ class GetConnect extends GetConnectInterface {
   @override
   Future<GraphQLResponse<T>> query<T>(
     String query, {
-    String? url,
+    required String url,
     Map<String, dynamic>? variables,
     Map<String, String>? headers,
   }) async {
@@ -337,7 +337,7 @@ class GetConnect extends GetConnectInterface {
   @override
   Future<GraphQLResponse<T>> mutation<T>(
     String mutation, {
-    String? url,
+    required String url,
     Map<String, dynamic>? variables,
     Map<String, String>? headers,
   }) async {

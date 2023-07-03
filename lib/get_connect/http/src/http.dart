@@ -81,11 +81,12 @@ class GetHttpClient {
     _modifier.removeResponseModifier<T>(interceptor);
   }
 
-  Uri _createUri(String? url, Map<String, dynamic>? query) {
-    if (baseUrl != null) {
-      url = baseUrl! + url!;
+  Uri _createUri(String url, Map<String, dynamic>? query) {
+    var uri = Uri.parse(url);
+    if (!uri.isAbsolute && baseUrl != null) {
+      url = baseUrl! + url;
+      uri = Uri.parse(url);
     }
-    final uri = Uri.parse(url!);
     if (query != null) {
       return uri.replace(queryParameters: query);
     }
@@ -93,7 +94,7 @@ class GetHttpClient {
   }
 
   Future<Request<T>> _requestWithBody<T>(
-    String? url,
+    String url,
     String? contentType,
     dynamic body,
     String method,
@@ -278,7 +279,7 @@ class GetHttpClient {
   }
 
   Future<Request<T>> _request<T>(
-    String? url,
+    String url,
     String method, {
     String? contentType,
     required dynamic body,
@@ -350,7 +351,7 @@ class GetHttpClient {
   }
 
   Future<Response<T>> post<T>(
-    String? url, {
+    String url, {
     dynamic body,
     String? contentType,
     Map<String, String>? headers,
