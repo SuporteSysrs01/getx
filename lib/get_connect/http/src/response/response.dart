@@ -72,23 +72,20 @@ class Response<T> {
 
 Future<String> bodyBytesToString(
     Stream<List<int>> bodyBytes, Map<String, String> headers) {
-  return bodyBytes.bytesToString(_encodingForHeaders(headers));
+  var encoding = _encodingForHeaders(headers);
+  if (encoding == null) {
+    return bodyBytes.bytesToString();
+  }
+  return bodyBytes.bytesToString(encoding);
 }
 
 /// Returns the encoding to use for a response with the given headers.
-///
-/// Defaults to [utf8] if the headers don't specify a charset or if that
-/// charset is unknown.
-Encoding _encodingForHeaders(Map<String, String> headers) =>
+Encoding? _encodingForHeaders(Map<String, String> headers) =>
     _encodingForCharset(_contentTypeForHeaders(headers).parameters!['charset']);
 
 /// Returns the [Encoding] that corresponds to [charset].
-///
-/// Returns [fallback] if [charset] is null or if no [Encoding] was found that
-/// corresponds to [charset].
-Encoding _encodingForCharset(String? charset, [Encoding fallback = utf8]) {
-  if (charset == null) return fallback;
-  return Encoding.getByName(charset) ?? fallback;
+Encoding? _encodingForCharset(String? charset) {
+  return Encoding.getByName(charset);
 }
 
 /// Returns the MediaType object for the given headers's content-type.

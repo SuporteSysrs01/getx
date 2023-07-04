@@ -126,6 +126,8 @@ extension BodyBytesStream on Stream<List<int>> {
     return completer.future;
   }
 
-  Future<String> bytesToString([Encoding encoding = utf8]) =>
+  // Latin1 is the default encoding for HTTP according to RFC 2616.
+  // See http://tools.ietf.org/html/rfc2616#section-3.7.1
+  Future<String> bytesToString([Encoding encoding = latin1]) =>
       encoding.decodeStream(this);
 }
