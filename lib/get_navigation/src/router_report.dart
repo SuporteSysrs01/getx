@@ -50,9 +50,7 @@ class RouterReportManager<T> {
 
   static void reportRouteDispose(Route disposed) {
     if (Get.smartManagement != SmartManagement.onlyBuilder) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _removeDependencyByRoute(disposed);
-      });
+      _removeDependencyByRoute(disposed);
     }
   }
 
